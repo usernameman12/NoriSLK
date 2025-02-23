@@ -1,0 +1,16 @@
+/project-root
+ ├── /public
+ │    ├── /frontend (youtube proxy)
+ │    │    ├── index.html
+ │    │    ├── styles.css
+ │    │    ├── script.js
+ │    │    ├── /assets
+ │    ├── /logged-in (dashboard or main app after login)
+ │    │    ├── index.html
+ │    │    ├── styles.css
+ │    │    ├── script.js
+ │    ├── proxy.js (handles youtube proxying)
+ ├── /api (backend logic for auth & proxy)
+ │    ├── login.js
+ │    ├── signup.js
+ ├── server.js (main server file)
