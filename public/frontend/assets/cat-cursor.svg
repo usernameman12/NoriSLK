@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
+  <!-- Cat head -->
+  <circle cx="24" cy="20" r="12" fill="#8a2be2" />
+  <!-- Left ear -->
+  <polygon points="14,12 20,4 22,12" fill="#8a2be2" />
+  <!-- Right ear -->
+  <polygon points="34,12 26,4 26,12" fill="#8a2be2" />
+  <!-- Eyes -->
+  <circle cx="20" cy="20" r="2" fill="#ffffff"/>
+  <circle cx="28" cy="20" r="2" fill="#ffffff"/>
+  <!-- Tail (group for animation) -->
+  <g id="tail" transform="translate(24,32)">
+    <path d="M0,0 c4,8 8,8 12,0" fill="none" stroke="#8a2be2" stroke-width="3" stroke-linecap="round"/>
+  </g>
+  <!-- Tail pivot point (for reference, invisible) -->
+  <circle cx="24" cy="32" r="1" fill="red" opacity="0"/>
+  <!-- CSS animation embedded -->
+  <style type="text/css">
+    <![CDATA[
+      @keyframes wag {
+        0% { transform: translate(0,0) rotate(0deg); }
+        25% { transform: translate(0,0) rotate(15deg); }
+        50% { transform: translate(0,0) rotate(0deg); }
+        75% { transform: translate(0,0) rotate(-15deg); }
+        100% { transform: translate(0,0) rotate(0deg); }
+      }
+      #tail {
+        transform-origin: 0 0;
+        animation: wag 1s infinite ease-in-out;
+      }
+    ]]>
+  </style>
+</svg>

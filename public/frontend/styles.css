@@ -1,171 +1,188 @@
 :root {
-    --primary: #8a2be2;  /* dark purple */
-    --secondary: #5e2a8c; /* deeper purple for accents */
-    --background: #0a0a0a;
-    --card-bg: #1c0d3a; /* dark purple-ish card */
-    --text: #ffffff;
-    --text-secondary: #cccccc;
-  }
-  
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Arial', sans-serif;
-  }
-  
-  /* Global body styles */
-  body {
-    background: var(--background);
-    color: var(--text);
-    overflow-x: hidden;
-    position: relative;
-  }
-  
-  /* Sidebar styles */
+  --primary: #8a2be2;  /* dark purple */
+  --secondary: #5e2a8c; /* deeper purple for accents */
+  --background: #0a0a0a;
+  --card-bg: #1c0d3a;   /* dark purple-ish card */
+  --text: #ffffff;
+  --text-secondary: #cccccc;
+}
+
+/* Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
+}
+
+body {
+  background: var(--background);
+  color: var(--text);
+  overflow-x: hidden;
+  position: relative;
+  /* Custom cat cursor (fallback to auto) */
+  cursor: url('assets/cat-cursor.svg') 24 24, auto;
+}
+
+/* Sidebar */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 220px;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(5px);
+  padding: 20px;
+  z-index: 1000;
+}
+
+.sidebar nav a {
+  display: flex;
+  align-items: center;
+  padding: 10px 5px;
+  color: var(--text-secondary);
+  text-decoration: none;
+  margin-bottom: 10px;
+  border-left: 3px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.sidebar nav a.active,
+.sidebar nav a:hover {
+  color: var(--primary);
+  border-left: 3px solid var(--primary);
+}
+
+.sidebar nav a img {
+  width: 24px;
+  margin-right: 10px;
+}
+
+/* Header */
+header {
+  position: fixed;
+  top: 0;
+  left: 220px;
+  right: 0;
+  height: 60px;
+  background: var(--card-bg);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  z-index: 900;
+}
+
+header .logo {
+  display: flex;
+  align-items: center;
+  font-size: 1.5rem;
+  color: var(--primary);
+}
+
+header .logo img {
+  width: 40px;
+  margin-right: 10px;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 30px;
+  padding: 5px 10px;
+}
+
+.search-bar input {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--text);
+  width: 250px;
+}
+
+.search-bar button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.search-bar button img {
+  width: 24px;
+}
+
+/* Main Video Grid */
+main#videoFeed {
+  margin-top: 80px;
+  margin-left: 240px;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 15px;
+}
+
+.video-card {
+  background: var(--card-bg);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.3s, opacity 0.5s;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.video-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.video-card img {
+  width: 100%;
+  display: block;
+}
+
+.video-info {
+  padding: 10px;
+}
+
+.video-title {
+  font-size: 1rem;
+  font-weight: bold;
+  margin-bottom: 5px;
+  transition: color 0.3s;
+}
+
+.video-title:hover {
+  color: var(--primary);
+}
+
+.video-meta {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+/* Animated Cat Follower */
+#catFollower {
+  position: fixed;
+  width: 50px;
+  height: 50px;
+  pointer-events: none;
+  transition: transform 0.1s ease-out;
+  z-index: 2000;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
   .sidebar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 220px;
-    height: 100vh;
-    background: rgba(0, 0, 0, 0.85);
-    backdrop-filter: blur(5px);
-    padding: 20px;
-    z-index: 1000;
+    width: 180px;
   }
-  .sidebar nav a {
-    display: flex;
-    align-items: center;
-    padding: 10px 5px;
-    color: var(--text-secondary);
-    text-decoration: none;
-    margin-bottom: 10px;
-    border-left: 3px solid transparent;
-    transition: all 0.3s ease;
-  }
-  .sidebar nav a.active,
-  .sidebar nav a:hover {
-    color: var(--primary);
-    border-left: 3px solid var(--primary);
-  }
-  .sidebar nav a img {
-    width: 24px;
-    margin-right: 10px;
-  }
-  
-  /* Header styles */
   header {
-    position: fixed;
-    top: 0;
-    left: 220px;
-    right: 0;
-    height: 60px;
-    background: var(--card-bg);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 20px;
-    z-index: 900;
+    left: 180px;
   }
-  header .logo {
-    display: flex;
-    align-items: center;
-    font-size: 1.5rem;
-    color: var(--primary);
-  }
-  header .logo img {
-    width: 40px;
-    margin-right: 10px;
-  }
-  .search-bar {
-    display: flex;
-    align-items: center;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 30px;
-    padding: 5px 10px;
+  main#videoFeed {
+    margin-left: 200px;
   }
   .search-bar input {
-    background: transparent;
-    border: none;
-    outline: none;
-    color: var(--text);
-    width: 250px;
+    width: 150px;
   }
-  .search-bar button {
-    background: none;
-    border: none;
-    cursor: pointer;
-  }
-  .search-bar button img {
-    width: 24px;
-  }
-  
-  /* Main video grid */
-  main#videoFeed {
-    margin-top: 80px;
-    margin-left: 240px;
-    padding: 20px;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 15px;
-  }
-  .video-card {
-    background: var(--card-bg);
-    border-radius: 8px;
-    overflow: hidden;
-    transition: transform 0.3s, opacity 0.5s;
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  .video-card.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  .video-card img {
-    width: 100%;
-    display: block;
-  }
-  .video-info {
-    padding: 10px;
-  }
-  .video-title {
-    font-size: 1rem;
-    font-weight: bold;
-    margin-bottom: 5px;
-    transition: color 0.3s;
-  }
-  .video-title:hover {
-    color: var(--primary);
-  }
-  .video-meta {
-    font-size: 0.85rem;
-    color: var(--text-secondary);
-  }
-  
-  /* Animated cat follower */
-  #catFollower {
-    position: fixed;
-    width: 50px;
-    height: 50px;
-    pointer-events: none;
-    transition: transform 0.1s ease-out;
-    z-index: 2000;
-  }
-  
-  /* Responsive adjustments */
-  @media (max-width: 768px) {
-    .sidebar {
-      width: 180px;
-    }
-    header {
-      left: 180px;
-    }
-    main#videoFeed {
-      margin-left: 200px;
-    }
-    .search-bar input {
-      width: 150px;
-    }
-  }
-  
+}
