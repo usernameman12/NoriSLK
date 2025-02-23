@@ -1,0 +1,11 @@
+{
+    "rewrites": [
+      {
+        "source": "/",
+        "destination": "/public/frontend/index.html"
+      }
+    ],
+    "cleanUrls": true,
+    "trailingSlash": false
+  }
+  
